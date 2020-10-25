@@ -620,13 +620,17 @@ acme_cron_update() {
       if [[ "${ID}" == "centos" ]]; then
           #        sed -i "/acme.sh/c 0 3 * * 0 \"/root/.acme.sh\"/acme.sh --cron --home \"/root/.acme.sh\" \
           #        &> /dev/null" /var/spool/cron/root
-          sed -i "/acme.sh/c 0 3 * * 0 bash ${ssl_update_file}" /var/spool/cron/root
-          sed -i "/acme.sh/c 0 5 * * * /sbin/reboot" /var/spool/cron/root
+          echo "0 4 * * 0 bash ${ssl_update_file}" >> crontab.txt
+          echo "0 5 * * * /sbin/reboot" >> crontab.txt
+          crontab crontab.txt
+          rm -f crontab.txt
       else
           #        sed -i "/acme.sh/c 0 3 * * 0 \"/root/.acme.sh\"/acme.sh --cron --home \"/root/.acme.sh\" \
           #        &> /dev/null" /var/spool/cron/crontabs/root
-          sed -i "/acme.sh/c 0 3 * * 0 bash ${ssl_update_file}" /var/spool/cron/crontabs/root
-          sed -i "/acme.sh/c 0 5 * * * /sbin/reboot" /var/spool/cron/root
+          echo "0 4 * * 0 bash ${ssl_update_file}" >> crontab.txt
+          echo "0 5 * * * /sbin/reboot" >> crontab.txt
+          crontab crontab.txt
+          rm -f crontab.txt
       fi
     fi
     judge "cron 计划任务更新"
