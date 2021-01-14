@@ -881,8 +881,9 @@ install_v2ray_ws_tls() {
     acme_cron_update  
     vmess_qr_config_tls_ws
     basic_information
-    vmess_link_image_choice
-    tls_type
+    vmess_qr_link_image
+    #vmess_link_image_choice
+    #tls_type
     show_information
 }
 install_v2_h2() {
