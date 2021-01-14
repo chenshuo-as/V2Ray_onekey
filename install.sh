@@ -876,14 +876,14 @@ install_v2ray_ws_tls() {
     web_camouflage
     ssl_judge_and_install
     nginx_systemd
+    start_process_systemd
+    enable_process_systemd
+    acme_cron_update  
     vmess_qr_config_tls_ws
     basic_information
     vmess_link_image_choice
     tls_type
     show_information
-    start_process_systemd
-    enable_process_systemd
-    acme_cron_update
 }
 install_v2_h2() {
     is_root
@@ -899,12 +899,12 @@ install_v2_h2() {
     port_exist_check "${port}"
     v2ray_conf_add_h2
     ssl_judge_and_install
+    start_process_systemd
+    enable_process_systemd
     vmess_qr_config_h2
     basic_information
     vmess_qr_link_image
     show_information
-    start_process_systemd
-    enable_process_systemd
 
 }
 update_sh() {
